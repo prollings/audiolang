@@ -4,14 +4,14 @@ import scanTokens from './scanner.js';
 let audioCtx = new window.AudioContext;
 
 // document
-let input = document.getElementById('input-box');
-let previous = document.getElementById('prev-cmds');
+let input = document.getElementById('input');
+let previous = document.getElementById('history');
 
 // main function
 input.addEventListener('keydown', (ev) => {
     if (ev.key === 'Enter') {
         consumeCommand(ev.target.value);
-        const tmpl = document.getElementById('prev-cmd-item').content.cloneNode(true);
+        const tmpl = document.getElementById('history-item').content.cloneNode(true);
         let li = tmpl.querySelector('li');
         li.innerText = ev.target.value;
         previous.appendChild(tmpl);
