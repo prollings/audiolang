@@ -167,6 +167,7 @@ function scanTokens(source) {
     return tokens;
 }
 
-export default scanTokens;
-export default tk;
-
+export {
+    scanTokens as default,
+    tk,
+};
