@@ -15,6 +15,8 @@ let tk = {
     // literals
     STRING: 'STRING',
     NUMBER: 'NUMBER',
+    // other
+    EOF: 'EOF',
 }
 
 let verbs = {
@@ -45,7 +47,7 @@ function isAlnum(char) {
     return isAlpha(char) || isDigit(char);
 }
 
-function scanTokens(source) {
+function scan(source) {
     let tokens = [];
     let start = 0;
     let current = 0;
@@ -164,10 +166,14 @@ function scanTokens(source) {
         scanToken();
     }
 
+    tokens.push({
+        type: tk.EOF,
+        text: 'end of input',
+    });
     return tokens;
 }
 
 export {
-    scanTokens as default,
+    scan as default,
     tk,
 };
