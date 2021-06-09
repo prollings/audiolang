@@ -10,6 +10,9 @@ let tk = {
     TO: 'TO',
     FROM: 'FROM',
     AS: 'AS',
+    ON: 'ON',
+    OVER: 'OVER',
+    AFTER: 'AFTER',
     // other
     IDENT: 'IDENT',
     // literals
@@ -17,7 +20,7 @@ let tk = {
     NUMBER: 'NUMBER',
     // other
     EOF: 'EOF',
-}
+};
 
 let verbs = {
     'create': tk.CREATE,
@@ -31,6 +34,9 @@ let keywords = {
     'to': tk.TO,
     'from': tk.FROM,
     'as': tk.AS,
+    'on': tk.ON,
+    'over': tk.OVER,
+    'after': tk.AFTER,
 };
 
 function isAlpha(char) {
