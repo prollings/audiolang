@@ -130,15 +130,11 @@ function param() {
     };
 }
 
-function literal(literal) {
+function literal() {
     // $literal
     let lit = next();
     switch (lit.type) {
         case tk.STRING:
-            return {
-                success: true,
-                value: lit.literal,
-            };
         case tk.NUMBER:
             return {
                 success: true,
