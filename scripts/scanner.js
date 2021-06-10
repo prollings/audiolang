@@ -34,9 +34,9 @@ let keywords = {
     'to': tk.TO,
     'from': tk.FROM,
     'as': tk.AS,
-    'on': tk.ON,
-    'over': tk.OVER,
     'after': tk.AFTER,
+    'over': tk.OVER,
+    'on': tk.ON,
 };
 
 function isAlpha(char) {
