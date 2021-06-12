@@ -149,6 +149,20 @@ function literal() {
     }
 }
 
+function identSequence() {
+    let idents = [];
+    while (peekNext().type === tk.IDENT) {
+        idents.push(next());
+    }
+    if (idents.length === 0) {
+        return failure('expected 1 or more identifiers');
+    }
+    return {
+        success: true,
+        idents
+    };
+}
+
 // meat
 function parse(tokens) {
     nextIdx = 0;
