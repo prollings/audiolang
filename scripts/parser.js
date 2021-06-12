@@ -57,11 +57,40 @@ function set() {
     let lit = literal();
     if (!lit.success) return lit;
 
+    let ev;
+    let overDur;
+    let afterDur;
+    while (next().type !== tk.EOF) {
+        switch (current().type) {
+            case tk.ON:
+                ev = identSequence();
+                if (!ev.success) {
+                    return ev;
+                }
+                break;
+            case tk.OVER:
+                overDur = literal();
+                if (!overDur.success) {
+                    return overDur;
+                }
+                break;
+            case tk.AFTER:
+                afterDur = literal();
+                if (!afterDur.success) {
+                    return afterDur;
+                }
+                break;
+        }
+    }
+
     return {
         success: true,
         verb: 'set',
         param: par,
-        literal: lit.value
+        literal: lit.value,
+        event: ev,
+        over: overDur,
+        after: afterDur,
     }
 }
 
