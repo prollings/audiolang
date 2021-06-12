@@ -15,6 +15,10 @@ function next() {
     return localTokens[nextIdx++];
 }
 
+function peekNext() {
+    return localTokens[nextIdx];
+}
+
 function current() {
     return localTokens[nextIdx - 1];
 }
