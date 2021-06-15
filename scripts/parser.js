@@ -88,7 +88,7 @@ function set() {
         verb: 'set',
         param: par,
         literal: lit.value,
-        event: ev,
+        event: ev.idents.map(ev => ev.text),
         over: overDur,
         after: afterDur,
     }
