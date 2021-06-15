@@ -46,7 +46,12 @@ function create(command) {
 }
 
 function set(command) {
-    return backend.set(command.param, command.literal);
+    const run = () => backend.set(command.param, command.literal);
+    if (command.event.length) {
+        onEvent(command.event, run);
+    } else {
+        return run();
+    }
 }
 
 function connect(command) {
@@ -55,4 +60,25 @@ function connect(command) {
 
 function disconnect(command) {
     return backend.disconnect(command.paramA, command.paramB);
+}
+
+// util
+
+function onEvent(ev, fn) {
+    if (ev[1] === 'mouse') {
+        let btn = ev[0];
+        if (btn !== 'left' || btn !== 'right') {
+            // fail
+        }
+        btn = btn === 'left' ? 0 : 2;
+        let dir = ev[2];
+        if (dir !== 'up' || dir !== 'down') {
+            // fail
+        }
+        document.addEventListener(`mouse${dir}`, ev => {
+            if (ev.button === btn) {
+                fn();
+            }
+        });
+    }
 }
